@@ -6,13 +6,7 @@ class BookmarkManager < Sinatra::Base
   enable :sessions
 
   get '/' do
-    @links = [
-        "www.google.co.uk"
-        "www.yahoo.com"
-        "www.facebook.com"
-        "www.twitter.com"
-             ]
-
+    @links = Link.all
     erb :index
   end
 
