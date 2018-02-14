@@ -7,6 +7,6 @@ describe Link do
       links = Link.all
       expect(links).to include("http://www.google.com")
       expect(links).to include("http://www.facebook.com")
-      expect(links).to include("http://makersacademy.com")
+      expect(links).to include("http://www.makersacademy.com")
   end
 end
