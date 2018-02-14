@@ -6,11 +6,11 @@ require 'rspec'
 
 Capybara.app = BookmarkManager
 
-ENV['RACK_ENV'] = 'test'
+ENV['ENVIRONMENT'] = 'test'
 
 RSpec.configure do |config|
   config.before(:each) do
-    require_relative './test_database_setup_spec'
+    require_relative './test_database_setup_spec.rb'
   end
 end
 
