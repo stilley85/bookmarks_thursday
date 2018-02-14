@@ -1,26 +1,13 @@
 require 'pg'
+require './lib/databaseconnection'
 
 class Link
 
   def self.all
-    if ENV['ENVIRONMENT'] == 'test'
-      connection = PG.connect(dbname: 'bookmark_manager_test')
-    else
-      connection = PG.connect(dbname: 'bookmark_manager')
-    end
-    result = connection.exec("SELECT * FROM links")
-    result.map { |link| link['url'] }
+    DatabaseConnection.query("SELECT * FROM links").map { |link| link['url'] }
   end
 
   def self.add_link(link)
-
-    if ENV['ENVIRONMENT'] == 'test'
-      connection = PG.connect(dbname: 'bookmark_manager_test')
-    else
-      connection = PG.connect(dbname: 'bookmark_manager')
-    end
-      connection.exec("INSERT INTO links(url) VALUES('#{link}')")
+    DatabaseConnection.query("INSERT INTO links(url) VALUES('#{link}')")
   end
-
 end
-
