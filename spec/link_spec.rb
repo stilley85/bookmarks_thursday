@@ -18,7 +18,8 @@ describe Link do
     end
 
     it 'raises an error when given an invalid link' do
-      expect{Link.add_link("your mum")}.to raise_error("invalid link has been entered")
+      Link.add_link("your mum")
+      expect(Link.all).not_to include "not a real link"
     end
   end
 end

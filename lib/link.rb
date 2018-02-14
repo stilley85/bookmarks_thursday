@@ -9,7 +9,7 @@ class Link
   end
 
   def self.add_link(link)
-    raise("invalid link has been entered") if working_url?(link) == nil
+    return false unless working_url?(link)
     DatabaseConnection.query("INSERT INTO links(url) VALUES('#{link}')")
   end
 end

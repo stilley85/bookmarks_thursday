@@ -12,5 +12,6 @@ group :development, :test do
   gem "rake"
   gem "rubocop"
   gem "pg"
+  gem "sinatra-flash"
 end
 

@@ -13,7 +13,7 @@ RSpec.configure do |config|
 
   config.before(:each) do
     # system("rake setup")
-    system("populate_test")
+    system("rake populate_test")
   end
 
   config.expect_with :rspec do |expectations|
