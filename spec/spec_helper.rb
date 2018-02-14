@@ -3,6 +3,7 @@ require File.join(File.dirname(__FILE__), '..', 'app.rb')
 require 'capybara'
 require 'capybara/rspec'
 require 'rspec'
+require 'rake'
 
 Capybara.app = BookmarkManager
 
@@ -11,7 +12,8 @@ ENV['ENVIRONMENT'] = 'test'
 RSpec.configure do |config|
 
   config.before(:each) do
-    system("rake setup")
+    # system("rake setup")
+    system("populate_test")
   end
 
   config.expect_with :rspec do |expectations|
