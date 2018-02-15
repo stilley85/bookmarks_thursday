@@ -37,7 +37,7 @@ describe Link do
 
   context '.delete' do
     it "can delete rows from the database" do
-      Link.delete('Makers Academy')
+      Link.delete(1)
       links = Link.all
       titles = links.map(&:title)
       expect(titles).not_to include("Makers Academy")

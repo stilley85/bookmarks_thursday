@@ -2,9 +2,13 @@ require 'sinatra/flash'
 
 feature 'link' do
   scenario 'Deletes a link from the database' do
-    visit('/delete_link')
-    fill_in 'delete_link_title', with: "Makers Academy"
-    click_button("Submit")
+    visit('/')
+
+    within '#link-1' do
+      click_button("Delete")
+    end
+
+    expect(current_path).to eq '/'
     expect(page).not_to have_content("Makers Academy")
   end
 

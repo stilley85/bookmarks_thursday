@@ -23,7 +23,7 @@ class BookmarkManager < Sinatra::Base
   end
 
   post '/delete_link' do
-    Link.delete(params[:delete_link_title])
+    Link.delete(params['id'])
     redirect '/'
   end
 

@@ -1,10 +1,10 @@
 feature 'link' do
   scenario 'Updates a links title in the database' do
-    visit('/update_link')
-    fill_in 'old_link_title', with: "Makers Academy"
-    fill_in 'updated_link_title', with: "New Title"
-    click_button("Submit_title")
-    expect(page).to have_content("New Title")
+    visit('/update_link/1')
+    fill_in 'url', with: "http://www.apple.com"
+    fill_in 'title', with: "apple"
+    click_button("Submit")
+    expect(page).to have_content("apple")
     expect(page).not_to have_content("Makers Academy")
   end
 
