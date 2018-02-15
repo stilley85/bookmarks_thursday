@@ -34,4 +34,12 @@ describe Link do
       expect(Link.all).not_to include "not a real link"
     end
   end
+  context '.delete' do
+    it "can delete rows from the database" do
+      Link.delete('Makers Academy')
+      links = Link.all
+      titles = links.map(&:title)
+      expect(titles).not_to include("Makers Academy")
+    end
+  end
 end
