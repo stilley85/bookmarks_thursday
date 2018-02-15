@@ -27,6 +27,10 @@ class Link
     DatabaseConnection.query("DELETE FROM links WHERE title = '#{title}'")
   end
 
+  def self.update(old_title, new_title)
+    DatabaseConnection.query("UPDATE links SET title = '#{new_title}' WHERE title = '#{old_title}'")
+  end
+
   private
 
   def self.working_url?(link)

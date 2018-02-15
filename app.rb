@@ -22,8 +22,6 @@ class BookmarkManager < Sinatra::Base
     flash.now[:error] = "You must submit a valid URL."
   end
 
-
-
   post '/delete_link' do
     Link.delete(params[:delete_link_title])
     redirect '/'
@@ -33,8 +31,14 @@ class BookmarkManager < Sinatra::Base
     erb :delete_link
   end
 
+  get '/update_link' do
+    erb :update_link
+  end
 
-
+  post '/update_link' do
+    Link.update(params[:old_link_title], params[:updated_link_title])
+    redirect('/')
+  end
 
   run! if app_file == $0
 
