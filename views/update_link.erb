@@ -1,26 +1,8 @@
 <h1>Update links here</h1>
 
-<form action="/update_title" method="POST">
-  <label for="old_link_title">
-    Enter a title to update
-    <input type="text" name="old_link_title">
-  </label>
-  <label for="updated_link_title">
-    Enter a new title
-    <input type="text" name="updated_link_title">
-  </label>
-  <input type="submit" value="Submit_title">
-</form>
-
-
-<form action="/update_url" method="POST">
-  <label for="old_link_url">
-    Enter a url to update
-    <input type="text" name="old_link_url">
-  </label>
-  <label for="updated_link_url">
-    Enter a new url
-    <input type="text" name="updated_link_url">
-  </label>
-  <input type="submit" value="Submit_url">
+<form action="/update_link" method="POST">
+  <input type="hidden" name="id" value="<%= @link.id %>">
+  <input type="text" name="url" value="<%= @link.url %>" />
+  <input type="text" name="title" value="<%= @link.title %>"/>
+  <input type="submit" value="Submit" />
 </form>

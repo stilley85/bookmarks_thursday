@@ -46,11 +46,24 @@ describe Link do
 
   context '.update' do
     it "can update titles in the database" do
-      Link.update('Makers Academy', 'New Link')
+      Link.update(1, url: "http://www.youtube.com", title: 'Youtube')
       links = Link.all
+      urls = links.map(&:url)
       titles = links.map(&:title)
+
+      expect(urls).not_to include("http://www.makersacademy.com")
       expect(titles).not_to include("Makers Academy")
-      expect(titles).to include("New Link")
+      expect(urls).to include("http://www.youtube.com")
+      expect(titles).to include("Youtube")
+    end
+  end
+
+  context ".find" do
+    it 'finds a link' do
+      link = Link.find(1)
+
+      expect(link.url).to eq "http://www.makersacademy.com"
+      expect(link.title).to eq("Makers Academy")
     end
   end
 end

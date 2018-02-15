@@ -27,12 +27,13 @@ class Link
     DatabaseConnection.query("DELETE FROM links WHERE id = '#{id}'")
   end
 
-  def self.update(old, updated)
-    if working_url?(old)
-      DatabaseConnection.query("UPDATE links SET url = '#{updated}' WHERE url = '#{old}'")
-    else
-      DatabaseConnection.query("UPDATE links SET title = '#{updated}' WHERE title = '#{old}'")
-    end
+  def self.update(id, options)
+      DatabaseConnection.query("UPDATE links SET url = '#{options[:url]}', title = '#{options[:title]}' WHERE id = '#{id}'")
+  end
+
+  def self.find(id)
+    result = DatabaseConnection.query("SELECT * FROM links WHERE id = #{id}")
+    result.map { |link| Link.new(link['id'], link['url'], link['title']) }.first
   end
 
   private

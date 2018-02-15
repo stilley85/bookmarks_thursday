@@ -32,20 +32,14 @@ class BookmarkManager < Sinatra::Base
   end
 
   get '/update_link' do
+    @link = Link.find(params['id'])
     erb :update_link
   end
 
-  post '/update_title' do
-    Link.update(params[:old_link_title], params[:updated_link_title])
+  post '/update_link' do
+    Link.update(params['id'], params)
     redirect('/')
   end
-
-  post '/update_url' do
-    Link.update(params[:old_link_url], params[:updated_link_url])
-    redirect('/')
-  end
-
-
 
   run! if app_file == $0
 
